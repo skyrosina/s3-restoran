@@ -33,7 +33,7 @@ export default async function globalTeardown() {
     const userId = await getUserId();
     console.log(`Running tests for student ID: ${userId}`);
 
-    const reportRaw = await fs.readFile("./playwright-report.json", "utf-8");
+    const reportRaw = await fs.readFile("playwright-report.json", "utf-8");
     const report = JSON.parse(reportRaw);
 
     const stats = report.stats;
