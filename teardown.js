@@ -33,7 +33,7 @@ export default async function globalTeardown() {
     const userId = await getUserId();
     console.log(`Running tests for student ID: ${userId}`);
 
-    const reportRaw = await fs.readFile("playwright-report.json", "utf-8");
+    const reportRaw = await fs.readFile("./playwright-report.json", "utf-8");
     const report = JSON.parse(reportRaw);
 
     const stats = report.stats;
@@ -55,8 +55,8 @@ export default async function globalTeardown() {
           code: html,
         },
       },
-      "user_id": userId,
-      "user_score": total > 0 ? ((passed / total) * 100).toFixed() : -1,
+      "user_id": Number(userId),
+      "user_score": total > 0 ? Number(((passed / total) * 100).toFixed()) : -1,
     };
 
     // Endpoint'e gönder
